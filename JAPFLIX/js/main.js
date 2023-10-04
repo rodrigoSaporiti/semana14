@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   let boton = document.getElementById("btnBuscar");
-  let contenedorInformacion = document.getElementById("informacion"); // Contenedor para mostrar información adicional
+  let contenedorInformacion = document.getElementById("informacion");
   
   boton.addEventListener("click", async function () {
     let buscar = document.getElementById("inputBuscar").value.toLowerCase();
