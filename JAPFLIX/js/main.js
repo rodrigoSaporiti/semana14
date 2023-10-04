@@ -94,5 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
     contenedorInformacion.appendChild(titulo);
     contenedorInformacion.appendChild(overview);
     contenedorInformacion.appendChild(genres);
-  }
+     // Actualizar valores en el desplegable
+  document.getElementById("yearDropdown").textContent = pelicula.release_date.split("-")[0];
+  document.getElementById("runtimeDropdown").textContent = `${pelicula.runtime} minutos`;
+  document.getElementById("budgetDropdown").textContent = `$${pelicula.budget}`;
+  document.getElementById("revenueDropdown").textContent = `$${pelicula.revenue}`;
+}
 });
