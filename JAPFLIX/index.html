@@ -28,8 +28,11 @@
       <ul class="list-group container" id="lista">
       </ul>
     </div>
+    <div id="informacion" class="container mt-4">
+      <!-- Aquí se mostrará la información adicional de la película -->
+    </div>
   </main>
-
+  
   <footer class="text-muted py-3">
     <div class="container">
       <p class="float-end mb-1">
@@ -40,9 +43,37 @@
       <p class="mb-1">Generado con fines estrictamente educativos.</p>
     </div>
   </footer>
-
+  <script>
+    // Espera a que se cargue la página
+    window.addEventListener('load', function () {
+      // Realiza una solicitud HTTP GET para obtener los datos
+      fetch('https://japceibal.github.io/japflix_api/movies-data.json')
+        .then(function (response) {
+          // Verifica si la solicitud fue exitosa
+          if (response.ok) {
+            // Convierte la respuesta JSON en un objeto JavaScript
+            return response.json();
+          } else {
+            throw new Error('No se pudo obtener la información de las películas.');
+          }
+        })
+        .then(function (data) {
+          // Almacena los datos en una variable (por ejemplo, 'moviesData')
+          var moviesData = data;
+          
+          // Puedes acceder a los datos aquí y realizar cualquier operación que desees
+          console.log(moviesData);
+        })
+        .catch(function (error) {
+          // Maneja cualquier error que pueda ocurrir durante la solicitud
+          console.error(error);
+        });
+    });
+  </script>
+  
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
+  
 
 </body>
 
