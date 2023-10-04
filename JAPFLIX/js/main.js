@@ -44,22 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
       let item = document.createElement("li");
       item.classList.add("list-group-item");
   
-      // Crear un elemento para mostrar el título
       let titulo = document.createElement("h3");
       titulo.textContent = pelicula.title;
       item.appendChild(titulo);
   
-      // Crear un elemento para mostrar el tagline
       let tagline = document.createElement("p");
       tagline.textContent = pelicula.tagline;
       item.appendChild(tagline);
   
-      // Crear un elemento para mostrar la puntuación en formato de estrellas
       let estrellas = document.createElement("p");
       estrellas.textContent = `Puntuación: ${pelicula.vote_average} ⭐⭐⭐⭐⭐`;
       item.appendChild(estrellas);
   
-      // Crear un botón para abrir el desplegable de información
       let botonInfo = document.createElement("button");
       botonInfo.classList.add("btn", "btn-primary");
       botonInfo.textContent = "Mostrar información de la película";
@@ -71,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mostrarInformacionAdicional(pelicula);
       });
   
-      // Agregar el botón al elemento de la lista
       item.appendChild(botonInfo);
   
       lista.appendChild(item);
@@ -79,9 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function mostrarInformacionAdicional(pelicula) {
-    contenedorInformacion.innerHTML = ""; // Limpiar el contenido existente
+    contenedorInformacion.innerHTML = "";
   
-    // Crear elementos para mostrar la información adicional
     let titulo = document.createElement("h2");
     titulo.textContent = pelicula.title;
   
@@ -102,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
     contenedorInformacion.appendChild(overview);
     contenedorInformacion.appendChild(generos);
   
-    // Actualizar valores en el desplegable
     document.getElementById("yearDropdown").textContent = pelicula.release_date.split("-")[0];
     document.getElementById("runtimeDropdown").textContent = `${pelicula.runtime} minutos`;
     document.getElementById("budgetDropdown").textContent = `$${pelicula.budget}`;
