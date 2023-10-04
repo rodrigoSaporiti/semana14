@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let resultados = productos.filter((element) => {
       const title = element.title.toLowerCase();
       const tagline = element.tagline.toLowerCase();
-      const genres = element.genres.join(', ').toLowerCase();
+      const genres = element.genres.map(genre => genre.name).join(', ').toLowerCase();
       const overview = element.overview.toLowerCase();
   
       return (
@@ -88,16 +88,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let overview = document.createElement("p");
     overview.textContent = `Resumen: ${pelicula.overview}`;
   
-    let genres = document.createElement("p");
-    genres.textContent = `Géneros: ${pelicula.genres.join(', ')}`;
+    let generos = document.createElement("p");
+    generos.textContent = "Géneros: ";
+  
+    for (let i = 0; i < pelicula.genres.length; i++) {
+      if (i > 0) {
+        generos.textContent += ", ";
+      }
+      generos.textContent += pelicula.genres[i].name;
+    }
   
     contenedorInformacion.appendChild(titulo);
     contenedorInformacion.appendChild(overview);
-    contenedorInformacion.appendChild(genres);
-     // Actualizar valores en el desplegable
-  document.getElementById("yearDropdown").textContent = pelicula.release_date.split("-")[0];
-  document.getElementById("runtimeDropdown").textContent = `${pelicula.runtime} minutos`;
-  document.getElementById("budgetDropdown").textContent = `$${pelicula.budget}`;
-  document.getElementById("revenueDropdown").textContent = `$${pelicula.revenue}`;
-}
+    contenedorInformacion.appendChild(generos);
+  
+    // Actualizar valores en el desplegable
+    document.getElementById("yearDropdown").textContent = pelicula.release_date.split("-")[0];
+    document.getElementById("runtimeDropdown").textContent = `${pelicula.runtime} minutos`;
+    document.getElementById("budgetDropdown").textContent = `$${pelicula.budget}`;
+    document.getElementById("revenueDropdown").textContent = `$${pelicula.revenue}`;
+  }
 });
