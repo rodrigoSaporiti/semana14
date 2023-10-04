@@ -44,11 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
       let item = document.createElement("li");
       item.classList.add("list-group-item");
   
-      // Agregar un evento clic para mostrar la información adicional
-      item.addEventListener("click", function () {
-        mostrarInformacionAdicional(pelicula);
-      });
-  
       // Crear un elemento para mostrar el título
       let titulo = document.createElement("h3");
       titulo.textContent = pelicula.title;
@@ -63,6 +58,21 @@ document.addEventListener('DOMContentLoaded', function() {
       let estrellas = document.createElement("p");
       estrellas.textContent = `Puntuación: ${pelicula.vote_average} ⭐⭐⭐⭐⭐`;
       item.appendChild(estrellas);
+  
+      // Crear un botón para abrir el desplegable de información
+      let botonInfo = document.createElement("button");
+      botonInfo.classList.add("btn", "btn-primary");
+      botonInfo.textContent = "Mostrar información de la película";
+      botonInfo.setAttribute("type", "button");
+      botonInfo.setAttribute("data-bs-toggle", "offcanvas");
+      botonInfo.setAttribute("data-bs-target", "#informacionOffcanvas");
+      botonInfo.setAttribute("aria-controls", "informacionOffcanvas");
+      botonInfo.addEventListener("click", function () {
+        mostrarInformacionAdicional(pelicula);
+      });
+  
+      // Agregar el botón al elemento de la lista
+      item.appendChild(botonInfo);
   
       lista.appendChild(item);
     });
@@ -85,5 +95,4 @@ document.addEventListener('DOMContentLoaded', function() {
     contenedorInformacion.appendChild(overview);
     contenedorInformacion.appendChild(genres);
   }
-  
 });
